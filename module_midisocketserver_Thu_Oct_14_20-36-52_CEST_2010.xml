@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_midisocketserver" default="compile.module.midisocketserver">
+  <dirname property="module.midisocketserver.basedir" file="${ant.file.module_midisocketserver}"/>
+  
+  <property name="module.jdk.home.midisocketserver" value="${jdk.home.1.6_(1)}"/>
+  <property name="module.jdk.bin.midisocketserver" value="${jdk.bin.1.6_(1)}"/>
+  <property name="module.jdk.classpath.midisocketserver" value="jdk.classpath.1.6_(1)"/>
+  
+  <property name="compiler.args.midisocketserver" value="${compiler.args}"/>
+  
+  <property name="midisocketserver.output.dir" value="${module.midisocketserver.basedir}/out/production/MIDISocketServer"/>
+  <property name="midisocketserver.testoutput.dir" value="${module.midisocketserver.basedir}/out/test/MIDISocketServer"/>
+  
+  <path id="midisocketserver.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="midisocketserver.module.production.classpath">
+    <path refid="${module.jdk.classpath.midisocketserver}"/>
+  </path>
+  
+  <path id="midisocketserver.runtime.production.module.classpath">
+    <pathelement location="${midisocketserver.output.dir}"/>
+  </path>
+  
+  <path id="midisocketserver.module.classpath">
+    <path refid="${module.jdk.classpath.midisocketserver}"/>
+    <pathelement location="${midisocketserver.output.dir}"/>
+  </path>
+  
+  <path id="midisocketserver.runtime.module.classpath">
+    <pathelement location="${midisocketserver.output.dir}"/>
+    <pathelement location="${midisocketserver.testoutput.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.midisocketserver">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.midisocketserver">
+    <patternset refid="excluded.from.module.midisocketserver"/>
+  </patternset>
+  
+  
+  <target name="compile.module.midisocketserver" depends="compile.module.midisocketserver.production,compile.module.midisocketserver.tests" description="Compile module MIDISocketServer"/>
+  
+  <target name="compile.module.midisocketserver.production" description="Compile module MIDISocketServer; production classes"/>
+  
+  <target name="compile.module.midisocketserver.tests" depends="compile.module.midisocketserver.production" description="compile module MIDISocketServer; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.midisocketserver" description="cleanup module">
+    <delete dir="${midisocketserver.output.dir}"/>
+    <delete dir="${midisocketserver.testoutput.dir}"/>
+  </target>
+</project>

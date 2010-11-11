@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Class-Path: /Volumes/DATA/WORK/SEQUENTIALMOOD/JAVA/MIDISocketServer/Ma
+ in/src
+Main-Class: MIDISocketServer
+
